@@ -1,5 +1,12 @@
-const HeroesListItem = ({ name, description, element }) => {
-  console.log(name);
+import { useDispatch } from "react-redux";
+
+import { useHttp } from "../../hooks/http.hook";
+import { heroDeleted } from "../../actions";
+import { heroesFetchingError } from "../../actions";
+
+const HeroesListItem = ({ id, name, description, element }) => {
+  const { request } = useHttp();
+  const dispatch = useDispatch();
 
   let elementClassName;
 
@@ -39,6 +46,12 @@ const HeroesListItem = ({ name, description, element }) => {
           type="button"
           className="btn-close btn-close"
           aria-label="Close"
+          onClick={() => {
+            dispatch(heroDeleted(id));
+            request(`http://localhost:3001/heroes/${id}`, "DELETE")
+              .then(() => dispatch(heroDeleted(id)))
+              .catch(() => dispatch(heroesFetchingError()));
+          }}
         ></button>
       </span>
     </li>

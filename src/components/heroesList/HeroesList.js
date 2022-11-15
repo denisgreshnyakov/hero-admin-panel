@@ -43,10 +43,8 @@ const HeroesList = () => {
 
     console.log(arr[0].id);
 
-    return arr.map(({ id, ...props }) => {
-      //id = uuidv4();
-
-      return <HeroesListItem key={id} {...props} />;
+    return arr.map(({ ...props }) => {
+      return <HeroesListItem key={uuidv4()} {...props} />;
     });
   };
 
