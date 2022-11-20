@@ -1,10 +1,67 @@
 {
-  "heroes": [],
+  "heroes": [
+    {
+      "id": "989968ae-e849-4461-8d62-3f57130f2e95",
+      "name": "Лолька феминизянка",
+      "description": "health",
+      "element": "water"
+    },
+    {
+      "id": "2714c9f9-5bd3-45f0-b179-df329e819568",
+      "name": "Лолька ленивый чебурек",
+      "description": "dark magе",
+      "element": "fire"
+    },
+    {
+      "id": "a024821e-e0d9-4af6-842e-4727fa071eed",
+      "name": "Сисястая собака всем давака",
+      "description": "damage",
+      "element": "wind"
+    },
+    {
+      "id": "50a680fc-6804-4c8b-a212-0d3e70cf6406",
+      "name": "Сисястая баба всех нагибака",
+      "description": "tank",
+      "element": "earth"
+    },
+    {
+      "id": "dbdf12de-daf6-4c0c-96f0-ba149cfeae58",
+      "name": "Denis Greshnyakov",
+      "description": "damage",
+      "element": "wind"
+    },
+    {
+      "id": "baba7a20-1c6c-437d-9832-7b96a8abbee1",
+      "name": "wert5",
+      "description": "damage",
+      "element": "wind"
+    }
+  ],
   "filters": [
-    "all",
-    "fire",
-    "water",
-    "wind",
-    "earth"
+    {
+      "name": "all",
+      "label": "Все",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-success"
+    },
+    {
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    }
   ]
 }
