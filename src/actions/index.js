@@ -36,31 +36,23 @@ export const filtersFetchingError = () => {
   };
 };
 
-export const filterActive = (filter) => {
+export const activeFilterChanged = (filter) => {
   return {
-    type: "FILTER_ACTIVE",
-    filter: filter.target.name,
+    type: "ACTIVE_FILTER_CHANGED",
+    payload: filter,
   };
 };
 
-export const heroAdd = (hero) => {
-  const newObj = Object.assign({}, hero);
+export const heroCreated = (hero) => {
   return {
-    type: "HERO_ADD",
-    payload: newObj,
+    type: "HERO_CREATED",
+    payload: hero,
   };
 };
 
 export const heroDeleted = (id) => {
   return {
     type: "HERO_DELETED",
-    id,
-  };
-};
-
-export const heroesFilter = (heroes) => {
-  return {
-    type: "HEROES_FILTER",
-    heroes,
+    payload: id,
   };
 };
