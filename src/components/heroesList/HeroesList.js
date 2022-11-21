@@ -30,7 +30,7 @@ const HeroesList = () => {
       .catch(() => dispatch(heroesFetchingError()));
 
     // eslint-disable-next-line
-  }, []);
+  }, [request]);
 
   if (heroesLoadingStatus === "loading") {
     return <Spinner />;
@@ -49,6 +49,7 @@ const HeroesList = () => {
       } else if (activeFilter === "all") {
         return <HeroesListItem key={uuidv4()} {...props} />;
       }
+      return null;
     });
   };
 

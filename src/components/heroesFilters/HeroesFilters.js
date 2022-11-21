@@ -9,7 +9,6 @@ import {
   filtersFetchingError,
 } from "../../actions";
 import { filterActive } from "../../actions";
-import HeroesListItem from "../heroesListItem/HeroesListItem";
 import Spinner from "../spinner/Spinner";
 // Задача для этого компонента:
 // Фильтры должны формироваться на основании загруженных данных

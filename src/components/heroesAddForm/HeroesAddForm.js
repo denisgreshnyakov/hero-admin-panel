@@ -1,16 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { heroAdd } from "../../actions";
-import {
-  Formik,
-  Form,
-  Field,
-  useField,
-  ErrorMessage as FormikErrorMessage,
-} from "formik";
+import { useDispatch } from "react-redux";
+import { Formik, Form, Field } from "formik";
 import { v4 as uuidv4 } from "uuid";
-import * as Yup from "yup";
-import { useHttp } from "../../hooks/http.hook";
+
+import { heroAdd } from "../../actions";
 import { heroesFetchingError } from "../../actions";
+
+import { useHttp } from "../../hooks/http.hook";
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -21,25 +16,6 @@ import { heroesFetchingError } from "../../actions";
 // Дополнительно:
 // Элементы <option></option> желательно сформировать на базе
 // данных из фильтров
-
-// const onSubmit = (e) => {
-//   e.preventDefault();
-//   console.log(e);
-// };
-
-// const MyTextInput = ({ label, ...props }) => {
-//   const [field, meta] = useField(props);
-
-//   return (
-//     <>
-//       <label htmlFor={props.name}>{label}</label>
-//       <input {...props} {...field} />
-//       {meta.touched && meta.error ? (
-//         <div className="error">{meta.error}</div>
-//       ) : null}
-//     </>
-//   );
-// };
 
 const HeroesAddForm = () => {
   const { request } = useHttp();
@@ -53,21 +29,17 @@ const HeroesAddForm = () => {
         description: "",
         element: "",
       }}
-      // validationSchema={Yup.object({
-      //   name: Yup.string()
-      //     .min(2, "Минимум 2 символа!")
-      //     .required("Обязательное поле!"),
-      //   text: Yup.string().min(10, "Не менее 10 символов"),
-      //   element: Yup.string().required("Выберите фильтр!"),
-      // })}
       onSubmit={(values) => {
         values.id = uuidv4();
+
         request(
           `http://localhost:3001/heroes`,
           "POST",
           JSON.stringify(values, null, 2)
         )
-          .then(() => dispatch(heroAdd(values)))
+          .then(() => {
+            dispatch(heroAdd(values));
+          })
           .catch(() => dispatch(heroesFetchingError()));
       }}
     >

@@ -44,9 +44,10 @@ export const filterActive = (filter) => {
 };
 
 export const heroAdd = (hero) => {
+  const newObj = Object.assign({}, hero);
   return {
     type: "HERO_ADD",
-    hero,
+    payload: newObj,
   };
 };
 

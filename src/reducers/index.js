@@ -1,5 +1,4 @@
 const initialState = {
-  minId: 4,
   heroes: [],
   heroesLoadingStatus: "idle",
   filtersLoadingStatus: "idle",
@@ -48,8 +47,7 @@ const reducer = (state = initialState, action) => {
         activeFilter: action.filter,
       };
     case "HERO_ADD":
-      state.heroes.push(action.hero);
-      console.log(state.heroes);
+      state.heroes.push(action.payload);
       return {
         ...state,
         heroes: state.heroes,
