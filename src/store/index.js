@@ -1,8 +1,24 @@
-import { createStore, combineReducers, compose } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import ReduxThunk from "redux-thunk";
 
 import heroes from "../reducers/heroes";
 import filters from "../reducers/filters";
 
+//расширяет dispatch
+//midleware - функции по добавлению функционала и изменения работы dispatch
+//чаще всего они позволяют принимать не только объекты, но и функции
+//строки и другие конструкции. Это не только оптимизация, но и создание
+//дополнительного функционала
+const stringMiddleware = () => (next) => (action) => {
+  if (typeof action === "string") {
+    return next({
+      type: action,
+    });
+  }
+  return next(action);
+};
+
+//расширяет store
 const enhancer =
   (createStore) =>
   (...args) => {
@@ -24,7 +40,7 @@ const enhancer =
 const store = createStore(
   combineReducers({ heroes, filters }),
   compose(
-    enhancer,
+    applyMiddleware(ReduxThunk, stringMiddleware),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
