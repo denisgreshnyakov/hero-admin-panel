@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import heroes from "../reducers/heroes";
-import filters from "../reducers/filters";
+import heroes from "../components/heroesList/heroesSlice";
+import filters from "../components/heroesFilters/filtersSlice";
 
 //расширяет dispatch
 //midleware - функции по добавлению функционала и изменения работы dispatch
